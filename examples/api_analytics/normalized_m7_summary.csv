@@ -1,0 +1,6 @@
+model,accuracy,balanced_accuracy,roc_auc,brier,log_loss,_source_path
+Prior Baseline,0.5325,0.5,0.4879,0.2494,0.6919,/mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m7
+Tuned Logistic Regression,0.5246,0.5041,0.514,0.2489,0.691,/mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m7
+Tuned Random Forest Classifier,0.5127,0.5017,0.5002,0.2511,0.6954,/mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m7
+Tuned XGBoost Classifier,0.5087,0.4989,0.5036,0.2519,0.697,/mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m7
+Tuned CatBoost Classifier,0.5127,0.5008,0.4999,0.2509,0.6949,/mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m7

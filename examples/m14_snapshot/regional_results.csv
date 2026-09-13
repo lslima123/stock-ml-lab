@@ -1,0 +1,5 @@
+task,horizon,region,level,rows,assets,local_primary,global_primary,global_improvement_vs_local_pct,global_win
+classification,5,Brazil,region,6091,5,0.6978783453108183,0.704648155375496,-0.9700559001673256,False
+classification,5,United States,region,6130,5,0.7053691967731205,0.6929107699512763,1.7662277965692597,True
+regression,5,Brazil,region,6091,5,0.04277015624431264,0.042151298173036415,1.4469390005058036,True
+regression,5,United States,region,6130,5,0.050468358920535916,0.04950470391254455,1.9094240997783811,True

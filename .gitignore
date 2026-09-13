@@ -1,0 +1,58 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+!frontend/.env.example
+*.log
+.idea/
+.vscode/
+dist/
+build/
+*.egg-info/
+*.tsbuildinfo
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Generated experiment reports
+reports/m6/*
+!reports/m6/.gitkeep
+
+reports/m7/*
+!reports/m7/.gitkeep
+reports/m8/*
+!reports/m8/.gitkeep
+
+# M8.1 generated confirmation reports
+reports/m8_1/*
+!reports/m8_1/.gitkeep
+
+# M9 generated analytics reports
+reports/m9/*
+!reports/m9/.gitkeep
+
+
+# Front-end generated artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# M12 trained binary artifacts
+artifacts/global/*.joblib
+artifacts/global/manifest.json
+reports/m12/*
+!reports/m12/.gitkeep
+
+# M13/M14 generated scope reports (curated snapshots live under examples/)
+reports/m13/*
+!reports/m13/.gitkeep
+reports/m14/*
+!reports/m14/.gitkeep

@@ -1,0 +1,55 @@
+{
+  "milestone": "M14",
+  "status": "locked_independent_scope_confirmation",
+  "hypothesis_locked_before_confirmation_download": true,
+  "horizon": 5,
+  "feature_set": "legacy",
+  "date_window": {
+    "start": "2018-01-01",
+    "end_exclusive": "2026-09-03"
+  },
+  "model_pairs": {
+    "regression": {"local": "ridge", "global": "ridge", "primary_metric": "rmse"},
+    "classification": {"local": "logistic", "global": "logistic", "primary_metric": "log_loss"}
+  },
+  "training_universe": [
+    "PETR4.SA", "VALE3.SA", "ITUB4.SA", "WEGE3.SA", "BOVA11.SA",
+    "AAPL", "MSFT", "NVDA", "JPM", "SPY"
+  ],
+  "independent_confirmation_universe": [
+    "BBAS3.SA", "ABEV3.SA", "AXIA3.SA", "SUZB3.SA", "RENT3.SA",
+    "GOOGL", "AMZN", "META", "XOM", "UNH"
+  ],
+  "protocol_amendments": [
+    {
+      "date": "2026-09-08",
+      "type": "administrative_provider_identifier_correction",
+      "from": "ELET3.SA",
+      "to": "AXIA3.SA",
+      "reason": "The same issuer's ordinary shares changed their official B3 ticker from ELET3 to AXIA3 effective 2025-11-10.",
+      "timing": "Applied after a failed locked preflight and before any model evaluation.",
+      "selection_effect": "none"
+    }
+  ],
+  "validation": {
+    "calendar_walk_forward_splits": 5,
+    "test_size_dates": 252,
+    "target_maturity_purge": true,
+    "hac_lags": 4,
+    "circular_block_bootstrap_length_dates": 5,
+    "bootstrap_repetitions": 10000,
+    "random_state": 20260903
+  },
+  "primary_hypotheses": [
+    "Global Ridge has lower expected OOS squared loss than Local Ridge at h=5.",
+    "Global Logistic has lower expected OOS log loss than Local Logistic at h=5."
+  ],
+  "multiplicity": "Benjamini-Hochberg FDR across the two locked task hypotheses",
+  "decision_rule": "Confirm only when one-sided date-clustered HAC q<0.05 and the 95% circular date-block-bootstrap improvement interval is fully above zero.",
+  "prohibitions": [
+    "No hyperparameter tuning on confirmation assets.",
+    "No ticker substitutions after seeing data or results.",
+    "No horizon, feature, phase, model-family, threshold or metric selection.",
+    "No use of confirmation-asset rows in the pooled global fit."
+  ]
+}

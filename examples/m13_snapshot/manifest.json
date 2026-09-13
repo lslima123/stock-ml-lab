@@ -1,0 +1,58 @@
+{
+  "milestone": "M13",
+  "created_at_utc": "2026-09-02T21:21:48.075077+00:00",
+  "scope_comparison": "local_vs_global_same_model_family",
+  "universe": [
+    "AAPL",
+    "BOVA11.SA",
+    "ITUB4.SA",
+    "JPM",
+    "MSFT",
+    "NVDA",
+    "PETR4.SA",
+    "SPY",
+    "VALE3.SA",
+    "WEGE3.SA"
+  ],
+  "horizons": [
+    1,
+    5,
+    10,
+    20
+  ],
+  "pairs": {
+    "regression": "ridge",
+    "classification": "logistic"
+  },
+  "features": [
+    "return_1d",
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_3",
+    "ma_5_distance",
+    "ma_10_distance",
+    "ma_20_distance",
+    "volatility_5",
+    "volatility_20",
+    "rsi_14",
+    "volume_change_1d"
+  ],
+  "ticker_identity_used": false,
+  "n_splits": 5,
+  "test_size_dates": 252,
+  "notes": [
+    "Local and global models use identical OOS dates and the same feature contract.",
+    "Global training uses all eligible assets; local training uses only the target ticker.",
+    "Target maturity purge is enforced before every OOS fold.",
+    "For h>1, HAC lags are at least h-1 because forward targets overlap.",
+    "M13 compares scope while holding model family fixed; it does not compare Ridge against Logistic as a scope effect.",
+    "These robustness diagnostics were specified after observing M13 and remain explicitly post hoc."
+  ],
+  "posthoc_diagnostics": {
+    "status": "post_hoc_robustness_diagnostic",
+    "bootstrap_repetitions": 10000,
+    "random_state": 42,
+    "date_clustered_hac": true,
+    "multiplicity_family": "all eight M13 task/horizon configurations"
+  }
+}

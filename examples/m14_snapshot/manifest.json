@@ -1,0 +1,58 @@
+{
+  "milestone": "M14",
+  "status": "locked_independent_scope_confirmation",
+  "horizon": 5,
+  "feature_set": "legacy",
+  "start": "2018-01-01",
+  "end_exclusive": "2026-09-03",
+  "n_splits": 5,
+  "test_size_dates": 252,
+  "hac_lags": 4,
+  "bootstrap_block_length_dates": 5,
+  "bootstrap_repetitions": 10000,
+  "random_state": 20260903,
+  "training_universe": [
+    "PETR4.SA",
+    "VALE3.SA",
+    "ITUB4.SA",
+    "WEGE3.SA",
+    "BOVA11.SA",
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "JPM",
+    "SPY"
+  ],
+  "confirmation_universe": [
+    "BBAS3.SA",
+    "ABEV3.SA",
+    "AXIA3.SA",
+    "SUZB3.SA",
+    "RENT3.SA",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "XOM",
+    "UNH"
+  ],
+  "protocol_amendments": [
+    "2026-09-08: provider identifier ELET3.SA corrected to AXIA3.SA after the official Eletrobras/AXIA ticker change effective 2025-11-10. This is the same ordinary-share issuer, and the locked preflight aborted before any model evaluation."
+  ],
+  "created_at_utc": "2026-09-08T00:53:10.629902+00:00",
+  "protocol_sha256": "27a740273531dd8b9bf1d0b1604a03c4f6ad37a4f56f1e88433a3c402c50bac3",
+  "model_pairs": {
+    "regression": "ridge",
+    "classification": "logistic"
+  },
+  "ticker_identity_used": false,
+  "primary_multiplicity_family": "two locked task hypotheses",
+  "decision_rule": "one-sided date-clustered HAC BH q<0.05 AND 95% circular date-block bootstrap improvement CI lower bound > 0",
+  "results_available": true,
+  "notes": [
+    "The pooled global fit uses only the original M13 universe.",
+    "Confirmation assets never enter a pooled global fit.",
+    "Local fits use only the target confirmation asset and matured labels.",
+    "No tuning, phase selection, asset substitution or horizon selection is performed.",
+    "Economic performance is outside this scope-loss confirmation contract."
+  ]
+}

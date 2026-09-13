@@ -1,0 +1,84 @@
+{
+  "title": "Stock ML Lab \u2014 Research Analytics",
+  "run_count": 6,
+  "source_runs": [
+    {
+      "kind": "m7",
+      "path": "../m9_snapshot/m7",
+      "manifest": {
+        "milestone": 7,
+        "snapshot": true
+      }
+    },
+    {
+      "kind": "m8_1",
+      "path": "../m9_snapshot/m81_confirmation",
+      "manifest": {
+        "milestone": "8.1",
+        "snapshot": true
+      }
+    },
+    {
+      "kind": "m8",
+      "path": "../m9_snapshot/m8_features",
+      "manifest": {
+        "milestone": 8,
+        "snapshot": true,
+        "stage": "features"
+      }
+    },
+    {
+      "kind": "m8",
+      "path": "../m9_snapshot/m8_stage_a",
+      "manifest": {
+        "milestone": 8,
+        "snapshot": true,
+        "stage": "A"
+      }
+    },
+    {
+      "kind": "m13",
+      "path": "../m13_snapshot",
+      "manifest": {
+        "milestone": "M13",
+        "snapshot": true,
+        "analysis_status": "post_hoc_robustness_diagnostic"
+      }
+    },
+    {
+      "kind": "m14",
+      "path": "../m14_snapshot",
+      "manifest": {
+        "milestone": "M14",
+        "snapshot": true,
+        "analysis_status": "locked_independent_scope_confirmation",
+        "protocol_sha256": "27a740273531dd8b9bf1d0b1604a03c4f6ad37a4f56f1e88433a3c402c50bac3"
+      }
+    }
+  ],
+  "findings": [
+    "Discovery: PETR4.SA 20d Logistic reached AUC 0.628 and +2.24% Log Loss improvement versus the prior.",
+    "Discovery: PETR4.SA 20d Ridge reached +4.47% RMSE improvement versus Zero Return.",
+    "Locked confirmation: 20d Logistic won on 1/9 assets; median improvement -0.34%.",
+    "Locked confirmation: 20d Ridge won on 4/9 assets; median improvement -0.11%.",
+    "Confirmatory inference: 0 locked asset-level result(s) survived primary HAC/FDR significance at 5%.",
+    "Bootstrap robustness: 0 M8.1 asset/candidate result(s) had a fully positive 95% primary-improvement interval.",
+    "M13: global scope won 10/10 classification assets and 9/10 regression assets at h=5; pooled improvements were +0.82% Log Loss and +0.89% RMSE.",
+    "M13 robustness checks are explicitly post hoc; they motivate but do not replace independent confirmation.",
+    "M14 confirmed Global Ridge over Local Ridge at h=5: +1.72% OOS RMSE improvement, HAC/FDR q=0.0001, bootstrap 95% CI [+0.91%, +2.56%], and 9/10 asset wins.",
+    "M14 did not confirm Global Logistic over Local Logistic: +0.41% Log Loss improvement, q=0.1577, bootstrap 95% CI [-0.39%, +1.22%].",
+    "The confirmed result concerns forecasting loss and training scope; it is not evidence of an economically tradable strategy."
+  ],
+  "figures": [
+    "discovery_vs_confirmation.png",
+    "m8_logistic_auc_by_horizon.png",
+    "m8_ridge_rmse_by_horizon.png",
+    "m8_feature_horizon_auc.png",
+    "m81_classification_10d_assets.png",
+    "m81_classification_20d_assets.png",
+    "m81_regression_10d_assets.png",
+    "m81_regression_20d_assets.png",
+    "m81_phase_win_rates.png",
+    "m7_one_day_auc.png"
+  ]
+}

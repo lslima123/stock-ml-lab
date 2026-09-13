@@ -1,0 +1,17 @@
+task,horizon,gap,feature_set,model_key,model,n_predictions,log_loss_improvement_vs_prior_pct,roc_auc
+classification,1,1,legacy,logistic,Tuned Logistic Regression,1260,0.02,0.4967
+classification,1,1,extended,logistic,Tuned Logistic Regression,1260,0.0,0.5094
+classification,1,1,market,logistic,Tuned Logistic Regression,1260,0.07,0.5094
+classification,1,1,regime,logistic,Tuned Logistic Regression,1260,-0.01,0.4987
+classification,5,5,legacy,logistic,Tuned Logistic Regression,1260,0.44,0.5577
+classification,5,5,extended,logistic,Tuned Logistic Regression,1260,0.69,0.5624
+classification,5,5,market,logistic,Tuned Logistic Regression,1260,0.83,0.565
+classification,5,5,regime,logistic,Tuned Logistic Regression,1260,0.78,0.5553
+classification,10,10,legacy,logistic,Tuned Logistic Regression,1260,1.86,0.5988
+classification,10,10,extended,logistic,Tuned Logistic Regression,1260,1.48,0.5967
+classification,10,10,market,logistic,Tuned Logistic Regression,1260,1.24,0.5919
+classification,10,10,regime,logistic,Tuned Logistic Regression,1260,1.29,0.5863
+classification,20,20,legacy,logistic,Tuned Logistic Regression,1260,2.24,0.628
+classification,20,20,extended,logistic,Tuned Logistic Regression,1260,2.09,0.6057
+classification,20,20,market,logistic,Tuned Logistic Regression,1260,0.09,0.5757
+classification,20,20,regime,logistic,Tuned Logistic Regression,1260,0.67,0.5551

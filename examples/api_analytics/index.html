@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock ML Lab — Research Analytics</title>
+<style>
+:root {
+  --bg: #f5f5f3;
+  --paper: #ffffff;
+  --ink: #171717;
+  --muted: #666666;
+  --line: #ddddda;
+  --accent: #25364a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+}
+header {
+  background: var(--accent);
+  color: white;
+  padding: 54px max(24px, calc((100vw - 1180px)/2));
+}
+header h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3.4rem); }
+header p { margin: 0; max-width: 850px; opacity: .9; }
+main { max-width: 1180px; margin: 0 auto; padding: 34px 24px 70px; }
+section {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 0 0 22px;
+}
+h2 { margin-top: 0; }
+.findings li { margin-bottom: 9px; }
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 20px;
+}
+.figure-card { margin: 0; }
+.figure-card img { width: 100%; height: auto; display: block; }
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+.data-table th, .data-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: right;
+  white-space: nowrap;
+}
+.data-table th:first-child, .data-table td:first-child { text-align: left; }
+.muted { color: var(--muted); }
+.note {
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+  color: var(--muted);
+}
+footer { color: var(--muted); margin-top: 30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Stock ML Lab — Research Analytics</h1>
+  <p>
+    Leakage-aware experiment analytics. Exploratory discovery is shown separately
+    from locked confirmation so attractive in-sample research findings are not
+    mistaken for generalizable predictive edge.
+  </p>
+</header>
+<main>
+<section>
+  <h2>Executive findings</h2>
+  <ul class="findings"><li>Discovery: PETR4.SA 20d Logistic reached AUC 0.628 and +2.24% Log Loss improvement versus the prior.</li><li>Discovery: PETR4.SA 20d Ridge reached +4.47% RMSE improvement versus Zero Return.</li><li>Locked confirmation: 20d Logistic won on 1/9 assets; median improvement -0.34%.</li><li>Locked confirmation: 20d Ridge won on 4/9 assets; median improvement -0.11%.</li><li>Confirmatory inference: 0 locked asset-level result(s) survived primary HAC/FDR significance at 5%.</li><li>Bootstrap robustness: 0 asset/candidate result(s) had a fully positive 95% primary-improvement interval.</li></ul>
+  <p class="note">
+    Interpretation rule: a configuration is not promoted from one attractive ticker.
+    Confirmation evidence is evaluated across assets, HAC/FDR inference, block-bootstrap
+    intervals and non-overlapping phase stability.
+  </p>
+</section>
+<section>
+  <h2>Discovery candidates</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>task</th>
+      <th>horizon</th>
+      <th>model</th>
+      <th>log_loss_improvement_vs_prior_pct</th>
+      <th>roc_auc</th>
+      <th>rmse_improvement_vs_zero_pct</th>
+      <th>directional_accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>classification</td>
+      <td>1</td>
+      <td>Tuned Logistic Regression</td>
+      <td>+0.02%</td>
+      <td>0.497</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>classification</td>
+      <td>5</td>
+      <td>Tuned Logistic Regression</td>
+      <td>+0.44%</td>
+      <td>0.558</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>classification</td>
+      <td>10</td>
+      <td>Tuned Logistic Regression</td>
+      <td>+1.86%</td>
+      <td>0.599</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>classification</td>
+      <td>20</td>
+      <td>Tuned Logistic Regression</td>
+      <td>+2.24%</td>
+      <td>0.628</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>regression</td>
+      <td>1</td>
+      <td>Tuned Ridge</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>-1.29%</td>
+      <td>50.48%</td>
+    </tr>
+    <tr>
+      <td>regression</td>
+      <td>5</td>
+      <td>Tuned Ridge</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>+0.74%</td>
+      <td>55.32%</td>
+    </tr>
+    <tr>
+      <td>regression</td>
+      <td>10</td>
+      <td>Tuned Ridge</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>+1.81%</td>
+      <td>58.89%</td>
+    </tr>
+    <tr>
+      <td>regression</td>
+      <td>20</td>
+      <td>Tuned Ridge</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>+4.47%</td>
+      <td>64.92%</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section>
+  <h2>Locked confirmation</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>task</th>
+      <th>horizon</th>
+      <th>model</th>
+      <th>n_assets</th>
+      <th>primary_win_count</th>
+      <th>primary_win_rate</th>
+      <th>primary_win_sign_test_p</th>
+      <th>mean_primary_improvement_pct</th>
+      <th>median_primary_improvement_pct</th>
+      <th>primary_hac_fdr_sig_count</th>
+      <th>primary_bootstrap_positive_count</th>
+      <th>mean_phase_win_rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>classification</td>
+      <td>10</td>
+      <td>Tuned Logistic Regression</td>
+      <td>9</td>
+      <td>5</td>
+      <td>55.56%</td>
+      <td>0.5000</td>
+      <td>-0.21%</td>
+      <td>+0.02%</td>
+      <td>0</td>
+      <td>0</td>
+      <td>44.44%</td>
+    </tr>
+    <tr>
+      <td>classification</td>
+      <td>20</td>
+      <td>Tuned Logistic Regression</td>
+      <td>9</td>
+      <td>1</td>
+      <td>11.11%</td>
+      <td>0.9980</td>
+      <td>-0.71%</td>
+      <td>-0.34%</td>
+      <td>0</td>
+      <td>0</td>
+      <td>24.44%</td>
+    </tr>
+    <tr>
+      <td>regression</td>
+      <td>10</td>
+      <td>Tuned Ridge</td>
+      <td>9</td>
+      <td>3</td>
+      <td>33.33%</td>
+      <td>0.9102</td>
+      <td>-0.62%</td>
+      <td>-0.61%</td>
+      <td>0</td>
+      <td>0</td>
+      <td>37.78%</td>
+    </tr>
+    <tr>
+      <td>regression</td>
+      <td>20</td>
+      <td>Tuned Ridge</td>
+      <td>9</td>
+      <td>4</td>
+      <td>44.44%</td>
+      <td>0.7461</td>
+      <td>-0.49%</td>
+      <td>-0.11%</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50.00%</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<div class="figure-grid">
+  <section class='figure-card'><h3>Discovery vs locked confirmation</h3><img src='figures/discovery_vs_confirmation.png' alt='Discovery vs locked confirmation'></section><section class='figure-card'><h3>Discovery: Logistic AUC by horizon</h3><img src='figures/m8_logistic_auc_by_horizon.png' alt='Discovery: Logistic AUC by horizon'></section><section class='figure-card'><h3>Discovery: Ridge RMSE improvement by horizon</h3><img src='figures/m8_ridge_rmse_by_horizon.png' alt='Discovery: Ridge RMSE improvement by horizon'></section><section class='figure-card'><h3>Exploratory feature-set × horizon map</h3><img src='figures/m8_feature_horizon_auc.png' alt='Exploratory feature-set × horizon map'></section><section class='figure-card'><h3>Locked confirmation: classification 10d across assets</h3><img src='figures/m81_classification_10d_assets.png' alt='Locked confirmation: classification 10d across assets'></section><section class='figure-card'><h3>Locked confirmation: classification 20d across assets</h3><img src='figures/m81_classification_20d_assets.png' alt='Locked confirmation: classification 20d across assets'></section><section class='figure-card'><h3>Locked confirmation: regression 10d across assets</h3><img src='figures/m81_regression_10d_assets.png' alt='Locked confirmation: regression 10d across assets'></section><section class='figure-card'><h3>Locked confirmation: regression 20d across assets</h3><img src='figures/m81_regression_20d_assets.png' alt='Locked confirmation: regression 20d across assets'></section><section class='figure-card'><h3>Locked confirmation: non-overlapping phase stability</h3><img src='figures/m81_phase_win_rates.png' alt='Locked confirmation: non-overlapping phase stability'></section><section class='figure-card'><h3>M7 one-day classification benchmark</h3><img src='figures/m7_one_day_auc.png' alt='M7 one-day classification benchmark'></section>
+</div>
+<section>
+  <h2>Provenance</h2>
+  <p class="muted">This report was built from 4 persisted experiment run(s).</p>
+  <ul>
+    <li><strong>m7</strong>: /mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m7</li><li><strong>m8_1</strong>: /mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m81_confirmation</li><li><strong>m8</strong>: /mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m8_features</li><li><strong>m8</strong>: /mnt/data/stock-ml-lab-milestone-10/examples/m9_snapshot/m8_stage_a</li>
+  </ul>
+</section>
+<footer>
+  Stock ML Lab · Milestone 9 · static research report generated from persisted experiment artifacts.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,9 @@
+task,horizon,gap,feature_set,model_key,model,n_predictions,log_loss,log_loss_improvement_vs_prior_pct,brier,brier_improvement_vs_prior_pct,balanced_accuracy,roc_auc,rmse,rmse_improvement_vs_zero_pct,mae,mae_improvement_vs_zero_pct,directional_accuracy
+classification,1,1,legacy,logistic,Tuned Logistic Regression,1260,0.6918,0.02,0.2493,0.03,0.4992,0.4967,,,,,
+classification,5,5,legacy,logistic,Tuned Logistic Regression,1260,0.6834,0.44,0.2451,0.61,0.5046,0.5577,,,,,
+classification,10,10,legacy,logistic,Tuned Logistic Regression,1260,0.6646,1.86,0.2361,2.46,0.5072,0.5988,,,,,
+classification,20,20,legacy,logistic,Tuned Logistic Regression,1260,0.6536,2.24,0.2307,2.98,0.5082,0.628,,,,,
+regression,1,1,legacy,ridge,Tuned Ridge,1260,,,,,,,0.021698,-1.29,0.015112,-1.12,0.5048
+regression,5,5,legacy,ridge,Tuned Ridge,1260,,,,,,,0.047776,0.74,0.035842,1.57,0.5532
+regression,10,10,legacy,ridge,Tuned Ridge,1260,,,,,,,0.069211,1.81,0.052224,3.46,0.5889
+regression,20,20,legacy,ridge,Tuned Ridge,1260,,,,,,,0.096199,4.47,0.072568,6.44,0.6492
